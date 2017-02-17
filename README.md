@@ -9,6 +9,8 @@
 - RESTful（API架构）
 - JWT（Json Web Token 认证协议）
 
+有待完善：引入测试框架、浏览器自动刷新（已实现文件修改自动重启服务）
+
 
 ## Install dependencies
 
