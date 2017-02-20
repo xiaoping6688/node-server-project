@@ -24,6 +24,12 @@ npm install
 npm start
 ```
 
+## Auto restarting node-server and reloading browsers for development
+
+```
+npm run livereload
+```
+
 ## Deploy with pm2
 
 Use pm2 to deploy app on production enviroment.
