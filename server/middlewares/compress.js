@@ -1,6 +1,6 @@
 /**
- * 压缩中间价
- * 注：配置nginx来处理压缩和静态文件
+ * 压缩中间件
+ * 注：生产环境配置nginx来处理压缩和静态文件
  */
 
 var compression = require('compression')
