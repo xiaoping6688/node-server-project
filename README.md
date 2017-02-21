@@ -1,5 +1,5 @@
 # node-server-project
-> 基于 node.js + express 技术栈，采用MVC等分层结构设计、PM2作服务监控的Node服务器端项目Demo。
+> 基于 node.js + express 技术栈，采用MVC结构设计、JWT + RESTful API、PM2服务监控的Node服务器端项目框架.
 
 技术栈
 
