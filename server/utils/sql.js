@@ -13,7 +13,7 @@ const util = require('./util')
  * @param changefields 要更新的字段（对象），更新方式是在原字段值基础上追加，【字段名=>追加值...】
  * @return 返回sql插入语句（字符串）
  */
-export function insert(table, record, updatefields = [], changefield = {}) {
+exports.insert = function (table, record, updatefields = [], changefield = {}) {
   let sql = `INSERT INTO ${table} (`
   sql += Object.keys(record).join(', ')
   sql += ") VALUES("
@@ -27,6 +27,10 @@ export function insert(table, record, updatefields = [], changefield = {}) {
     sql += updatefields.map(v => `${v}='${util.escapeSql(record[v])}'`).join(', ')
     // or
     let flag = 0
+    if (!util.isEmpty(updatefields)) {
+      flag = 1
+    }
+
     for (let k in changefield) {
       let v = changefield[k]
       if (util.isNumber(v)) {
@@ -49,7 +53,7 @@ export function insert(table, record, updatefields = [], changefield = {}) {
  * @return 返回sql多行插入语句（字符串）
  * @see #insert()
  */
-export function insertMore(table, records) {
+exports.insertMore = function (table, records) {
   let sql = `INSERT INTO ${table} (`
   sql += Object.keys(records[0]).join(', ')
   sql += ") VALUES"
@@ -75,7 +79,7 @@ export function insertMore(table, records) {
  * @param exwhere 扩展条件（字符串），不含"where"关键字
  * @return 返回sql更新语句（字符串）
  */
-export function update(table, updatefield, where, changefield = {}, exwhere = '') {
+exports.update = function (table, updatefield, where, changefield = {}, exwhere = '') {
   let sql = `UPDATE ${table} SET `
   let flag = 0
   for (let k in updatefield) {
@@ -85,12 +89,15 @@ export function update(table, updatefield, where, changefield = {}, exwhere = ''
   }
 
   flag = 0
+  if (!util.isEmpty(updatefield)) {
+    flag = 1
+  }
   for (let k in changefield) {
     let v = changefield[k]
     if (util.isNumber(v)) {
-      sql += `${flag == 0 ? "" : ","} ${k}=${k}${v >= 0 ? "+" : ""}${v}`
+      sql += `${flag == 0 ? "" : ", "}${k}=${k}${v >= 0 ? "+" : ""}${v}`
     } else {
-      sql += `${flag == 0 ? "" : ","} ${k}=CONCAT(${k},'${util.escapeSql(v)}')`
+      sql += `${flag == 0 ? "" : ", "}${k}=CONCAT(${k},'${util.escapeSql(v)}')`
     }
     flag = 1
   }
@@ -119,8 +126,8 @@ export function update(table, updatefield, where, changefield = {}, exwhere = ''
  * @param other 其他语句（字符串），如limit、order by、group by等 一般不建议使用
  * @return 返回sql删除语句（字符串）
  */
-export function select(table, fields, where, exwhere = "", other = "") {
-  let sql = `SELECT ${fields.join(", ")} FROM ${table}`
+exports.select = function (table, fields, where, exwhere = "", other = "") {
+  let sql = `SELECT ${util.isEmpty(fields) ? '*' : fields.join(", ")} FROM ${table}`
   let flag = 0
 
   for (let k in where) {
@@ -151,7 +158,7 @@ export function select(table, fields, where, exwhere = "", other = "") {
  * @param record 要插入或替换的记录行（对象）【字段名=>值...】
  * @return 返回sql替换语句（字符串）
  */
-export function replace(table, record) {
+exports.replace = function (table, record) {
   let sql = `REPLACE INTO ${table} (`
   sql += Object.keys(record).join(', ')
   sql += ") VALUES("
@@ -169,7 +176,7 @@ export function replace(table, record) {
  * @return 返回sql多行插入或替换语句（字符串）
  * @see #replace()
  */
-export function replaceMore(table, records) {
+exports.replaceMore = function (table, records) {
   let sql = `REPLACE INTO ${table} (`
   sql += Object.keys(records[0]).join(', ')
   sql += ") VALUES"
@@ -193,7 +200,7 @@ export function replaceMore(table, records) {
  * @param exwhere 扩展条件（字符串），不含"where"关键字
  * @return 返回sql删除语句（字符串）
  */
-export function delete(table, where, exwhere = "") {
+exports.delete = function (table, where, exwhere = "") {
   let sql = `DELETE FROM ${table}`
   let flag = 0
 
@@ -201,7 +208,7 @@ export function delete(table, where, exwhere = "") {
     let v = where[k]
     sql += `${flag == 0 ? " WHERE " : " AND "}${k}='${util.escapeSql(v)}'`
     flag = 1
-  })
+  }
 
   if (exwhere.length > 0) {
     sql += (flag == 0 ? " WHERE " : " AND ") + exwhere
