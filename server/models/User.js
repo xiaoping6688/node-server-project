@@ -2,11 +2,11 @@
  * 用户模型（mongodb）
  */
 
-var mongoose    = require('mongoose')
-var Schema      = mongoose.Schema
 var MongooseDao = require('mongoosedao')
+var mongodb = require('../utils/mongodb')
+var Schema = mongodb.Schema
 
-UserSchema = new Schema({
+var UserSchema = new Schema({
   username: {
     type: String,
     required: true,
@@ -43,7 +43,7 @@ UserSchema.statics.delete_by_name = function(name, cb_succ, cb_fail) {
 
 }
 
-var UserModel = mongoose.model('UserModel', UserSchema)
+var UserModel = mongodb.model('UserModel', UserSchema)
 
 var UserDao = new MongooseDao(UserModel)
 

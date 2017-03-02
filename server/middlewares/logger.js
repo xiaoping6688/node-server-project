@@ -20,6 +20,11 @@ var accessLogStream = FileStreamRotator.getStream({
   verbose: false
 })
 
-module.exports = function (type) {
-  return morgan(type, { stream: accessLogStream })
+var logger
+if (process.env.NODE_ENV === 'production') {
+  logger = morgan('combined', { stream: accessLogStream }) // Standard Apache combined log output
+} else {
+  logger = morgan('dev', { stream: accessLogStream }) // :method :url :status :response-time ms - :res[content-length]
 }
+
+module.exports = logger

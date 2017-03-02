@@ -23,14 +23,20 @@
     "file-stream-rotator": "0.0.7",
     "hbs": "~4.0.0",
     "jsonwebtoken": "^7.3.0",
+    "lodash": "^4.17.4",
     "mongoose": "^4.8.3",
     "mongoosedao": "^1.0.13",
     "morgan": "~1.7.0",
     "mount-routes": "^1.0.6",
+    "mysql2": "^1.2.0",
+    "pg": "^6.1.2",
+    "pg-hstore": "^2.3.2",
     "redis": "^2.6.5",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
-    "serve-favicon": "~2.3.0"
+    "sequelize": "^3.30.2",
+    "serve-favicon": "~2.3.0",
+    "sqlite3": "^3.1.8"
   },
   "devDependencies": {
     "browser-sync": "^2.18.8",

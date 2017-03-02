@@ -12,6 +12,7 @@ var compression = require('./server/middlewares/compress')
 var resApi = require('./server/middlewares/api')
 
 // require('./server/utils/mongodb') // init mongodb
+// require('./server/utils/orm') // init orm
 
 var app = express()
 
@@ -26,11 +27,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 // log middleware
-if (app.get('env') === 'development') {
-  app.use(logger('dev')) // :method :url :status :response-time ms - :res[content-length]
-} else {
-  app.use(logger('combined')) // Standard Apache combined log output
-}
+app.use(logger)
 
 // api output middleware
 app.use(resApi)

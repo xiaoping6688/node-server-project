@@ -5,19 +5,9 @@
 var mongoose = require('mongoose')
 var config = require('../../config/mongodb')
 
-var connectionString = 'mongodb://' + config.host + ':' + config.port + '/' + config.db
+var uri = 'mongodb://' + config.host + ':' + config.port + '/' + config.database
 
-var options = {
-  db: {
-    native_parser: true
-  },
-  server: {
-    auto_reconnect: true,
-    poolSize: 5
-  }
-}
-
-mongoose.connect(connectionString, options, function (err, res) {
+mongoose.connect(uri, config.options, function (err, res) {
   if (err) {
     console.log('[mongoose] Error connecting to: ' + connectionString + '. ' + err)
     return process.exit(1)
@@ -26,12 +16,9 @@ mongoose.connect(connectionString, options, function (err, res) {
   }
 })
 
-var db = mongoose.connection
-
-db.on('error', console.error.bind(console, 'mongoose connection error:'))
-
-db.once('open', function() {
+mongoose.connection.on('error', console.error.bind(console, 'mongoose connection error:'))
+mongoose.connection.once('open', function() {
   return console.log('mongoose open success')
 })
 
-module.exports = db
+module.exports = mongoose
