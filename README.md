@@ -32,7 +32,7 @@ npm run livereload
 ## For test, such as:
 
 ```
-npm test test/api/signin.js
+npm test ./test/api/signin.js
 ```
 
 ## Deploy with pm2
