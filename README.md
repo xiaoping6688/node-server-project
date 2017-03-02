@@ -29,6 +29,12 @@ npm start
 npm run livereload
 ```
 
+## For test, such as:
+
+```
+npm test test/api/signin.js
+```
+
 ## Deploy with pm2
 
 Use pm2 to deploy app on production enviroment.

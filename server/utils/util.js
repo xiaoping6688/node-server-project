@@ -20,7 +20,7 @@ exports.findNameById = function (arr, id) {
 }
 
 exports.isObjectLike = function (value) {
-  return !!value && typeof value == 'object';
+  return !!value && typeof value == 'object'
 }
 
 exports.isNumber = function (value) {
