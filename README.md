@@ -3,7 +3,7 @@
 
 技术栈
 
-- node.js（>6.0）
+- node.js（>7.0 已原生支持绝大部分ES6/ES7语法）
 - express（成熟稳定的Web开发框架）
 - hbs（handlebars模版引擎）
 - RESTful（API架构风格）
@@ -23,7 +23,7 @@ npm install
 npm start
 ```
 
-## Auto restarting node-server and reloading browsers for development
+## Auto restarting server and reloading browsers for development
 
 ```
 npm run livereload
