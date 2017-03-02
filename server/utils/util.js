@@ -4,6 +4,7 @@
 
 var Sequelize = require('sequelize')
 var trimFunc = require('lodash/trim')
+var isEmptyFunc = require('lodash/isEmpty')
 
 /**
  * 找出第一个符合条件的数组成员
@@ -33,6 +34,16 @@ export function escapeSql(string) {
   return Sequelize.escape(string)
 }
 
+/**
+ * 去掉字符串前后空白或指定字符
+ */
 export function trim(string, chars) {
-  return trimFunc(string, chars)
+  return trimFunc(string, chars) // es6 String.trim 不支持 chars 参数
+}
+
+/**
+ * Checks if value is an empty object, collection, map, or set.
+ */
+export function isEmpty(value) {
+  return isEmptyFunc(value)
 }
