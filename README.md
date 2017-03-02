@@ -4,10 +4,11 @@
 技术栈
 
 - node.js（>6.0）
-- express（web开发框架）
+- express（成熟稳定的Web开发框架）
 - hbs（handlebars模版引擎）
-- RESTful（API架构）
+- RESTful（API架构风格）
 - JWT（Json Web Token 认证协议）
+- ORM（数据库对象关系映射）
 
 
 ## Install dependencies
