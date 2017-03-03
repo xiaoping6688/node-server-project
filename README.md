@@ -9,6 +9,7 @@
 - RESTful（API架构风格）
 - JWT（Json Web Token 认证协议）
 - ORM（数据库对象关系映射）
+- [Swagger-ui](https://github.com/swagger-api/swagger-ui)（API文档在线生成和测试, public/swagger）
 
 
 ## Install dependencies
