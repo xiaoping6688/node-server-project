@@ -15,8 +15,8 @@ module.exports = jwt({
   }
 }).unless({
   path: [
-    '/rest/register',
-    '/rest/signin',
+    '/rest/user/regist',
+    '/rest/user/login',
     /^(?!\/rest\/).*/
   ]
 })
