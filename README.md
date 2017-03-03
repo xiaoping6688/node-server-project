@@ -43,7 +43,7 @@ Use pm2 to deploy app on production enviroment.
 pm2 startOrReload config/pm2.json
 ```
 
-## check update for npm packages
+## Check update for npm packages
 
 Please install 'npm install npm-check-updates -g' at first
 
