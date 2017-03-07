@@ -9,7 +9,7 @@
 - RESTful（API架构风格）
 - JWT（Json Web Token 认证协议）
 - ORM（数据库对象关系映射）
-- [Swagger-ui](https://github.com/swagger-api/swagger-ui)（API文档在线生成和测试, public/swagger）
+- TEST（集成在线API文档生成和测试工具[Swagger-ui](https://github.com/swagger-api/swagger-ui)，public/swagger目录下）
 
 
 ## Install dependencies
@@ -30,7 +30,7 @@ npm start
 npm run livereload
 ```
 
-## For test, such as:
+## For unit test, such as:
 
 ```
 npm test ./test/api/signin.js
