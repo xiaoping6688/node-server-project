@@ -3,6 +3,16 @@
   "version": "0.0.1",
   "description": "基于node.js技术栈的服务器端项目框架示例",
   "author": "super_xp@126.com",
+  "keywords": [
+    "node.js",
+    "express",
+    "restful api",
+    "node-frameworek"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaoping6688/node-server-project"
+  },
   "license": "MIT",
   "private": false,
   "scripts": {
