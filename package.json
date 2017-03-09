@@ -20,7 +20,7 @@
     "dev": "NODE_ENV=development supervisor -w server,app.js ./bin/www",
     "prod": "NODE_ENV=production pm2 start ./bin/www -i max",
     "debug": "NODE_ENV=development supervisor --debug -w server,app.js ./bin/www",
-    "livereload": "gulp browser-sync",
+    "live": "gulp browser-sync",
     "reload": "pm2 reload all",
     "test": "./node_modules/mocha/bin/mocha",
     "update": "ncu -u -a"
