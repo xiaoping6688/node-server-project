@@ -42,6 +42,7 @@
     "mongoosedao": "^1.0.13",
     "morgan": "~1.7.0",
     "mount-routes": "^1.0.6",
+    "mysql": "^2.13.0",
     "mysql2": "^1.2.0",
     "pg": "^6.1.2",
     "pg-hstore": "^2.3.2",

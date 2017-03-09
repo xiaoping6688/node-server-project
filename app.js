@@ -13,6 +13,7 @@ var resApi = require('./server/middlewares/api')
 
 // require('./server/utils/mongodb') // init mongodb
 // require('./server/utils/orm') // init orm
+require('./server/utils/hbs') // init hbs
 
 var app = express()
 
@@ -25,6 +26,9 @@ app.use(bodyParser.json()) // application/json, any Unicode, gzip/deflate
 app.use(bodyParser.urlencoded({ extended: false })) // application/x-www-form-urlencoded, UTF-8, gzip/deflate
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+
+// set resouces root url
+app.locals.resoucePath = '/static'
 
 // log middleware
 app.use(logger)
@@ -43,7 +47,7 @@ app.use(compression)
 //   origin: '*',
 //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 // }
-app.use(cors())
+// app.use(cors())
 
 // auto mount routes with routes_folder_path, 'false': dont dump list
 mountRoutes(app, path.join(__dirname, 'server', 'routes'), false)
@@ -88,6 +92,7 @@ if (app.get('env') === 'development') {
     } else {
       res.status(err.status || 500)
       res.render('error', {
+        layout: false,
         message: err.message,
         error: err
       })
@@ -107,6 +112,7 @@ app.use(function (err, req, res, next) {
   } else {
     res.status(err.status || 500)
     res.render('error', {
+      layout: false,
       message: err.message,
       error: {}
     })
