@@ -12,7 +12,8 @@ USE `db_test`;
 -- 授权：本地连接，增删改查
 -- 帐号：test 密码：*** (SELECT PASSWORD('***');)
 --
-GRANT SELECT,INSERT,UPDATE,DELETE ON `db_test`.* TO 'test'@'127.0.0.1' IDENTIFIED BY PASSWORD '*A0E2521E77EA33EF451BF2D1025F30B925D8F2F2';
+CREATE USER 'test'@'127.0.0.1' IDENTIFIED BY '*A0E2521E77EA33EF451BF2D1025F30B925D8F2F2';
+GRANT SELECT,INSERT,UPDATE,DELETE ON `db_test`.* TO 'test'@'127.0.0.1';
 
 -- --------------------------------------------------------
 
@@ -21,32 +22,44 @@ GRANT SELECT,INSERT,UPDATE,DELETE ON `db_test`.* TO 'test'@'127.0.0.1' IDENTIFIE
 --
 
 /*--------------------------------------------------------------------------*
-  NAME: test “用户帐号表” -变化频繁
+  NAME: 用户帐号表 - 变化频繁
  *--------------------------------------------------------------------------*/
-CREATE TABLE b_test_account_0 (
-  uid int unsigned NOT NULL                               COMMENT '用户id',
+CREATE TABLE b_account_0 (
+  uid INT UNSIGNED NOT NULL                               COMMENT '用户ID',
+  gold INT UNSIGNED DEFAULT 0                             COMMENT '金币',
 
-  ctime timestamp NOT NULL DEFAULT 0,     -- 创建时间
+  ext VARCHAR(255) DEFAULT ''                             COMMENT '扩展字段',
+  ctime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP      COMMENT '创建时间',
   PRIMARY KEY(uid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*--------------------------------------------------------------------------*
-  NAME: test “用户帐号表” -变化不频繁
+  NAME: 用户帐号基本信息表 - 变化不频繁
  *--------------------------------------------------------------------------*/
-CREATE TABLE b_test_account2_0 (
-  uid int NOT NULL DEFAULT '0',       -- 用户uid
-
-  ctime timestamp NOT NULL DEFAULT 0,     -- 创建时间
-  primary key(uid)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE b_account2_0 (
+  uid INT UNSIGNED NOT NULL                               COMMENT '用户ID',
+  realname VARCHAR(20) NOT NULL                           COMMENT '姓名',
+  nickname VARCHAR(40) DEFAULT ''                         COMMENT '昵称',
+  gender TINYINT DEFAULT 0                                COMMENT '性别',
+  avatar VARCHAR(255) DEFAULT ''                          COMMENT '头像',
+  birthday DATE                                           COMMENT '生日',
+  phone VARCHAR(11) DEFAULT ''                            COMMENT '电话',
+  email VARCHAR(45) DEFAULT ''                            COMMENT '邮箱',
+  wechat VARCHAR(40) DEFAULT ''                           COMMENT '微信',
+  qq VARCHAR(20) DEFAULT ''                               COMMENT 'QQ',
+  province VARCHAR(20) DEFAULT ''                         COMMENT '省份',
+  city VARCHAR(20) DEFAULT ''                             COMMENT '城市',
+  address VARCHAR(255) DEFAULT ''                         COMMENT '住址',
+  ext VARCHAR(255) DEFAULT ''                             COMMENT '扩展字段',
+  ctime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP      COMMENT '创建时间',
+  PRIMARY KEY(uid)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*--------------------------------------------------------------------------*
-  NAME: test “商品表”
+  NAME: 来源渠道
  *--------------------------------------------------------------------------*/
-CREATE TABLE s_test_goods (
-  goodsid int not null auto_increment,    -- 商品id
-  classid int not null default 0,     -- 商品分类
-
-  primary key(goodsid),
-  key(classid)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE s_origin_channel (
+  id INT NOT NULL AUTO_INCREMENT                          COMMENT '渠道ID',
+  name VARCHAR(40) NOT NULL                               COMMENT '名称',
+  PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

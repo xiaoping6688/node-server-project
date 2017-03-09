@@ -1,8 +1,8 @@
 module.exports = {
   development: {
-    database: 'nodeserver',
-    username: 'root',
-    password: null,
+    database: 'db_test',
+    username: 'test',
+    password: '*A0E2521E77EA33EF451BF2D1025F30B925D8F2F2',
     options: {
       host: '127.0.0.1',
       port: 3306,
