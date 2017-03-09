@@ -4,19 +4,25 @@ const browserSync = require('browser-sync').create()
 
 gulp.task("server", function(cb) {
   let started = false
-
-  nodemon({
+  let stream = nodemon({
     script: './bin/www',
     ext: 'js',
     watch: ['server/', 'app.js'],
     env: {
       'NODE_ENV': 'development'
     }
-  }).on('start', function () {
+  })
+
+  stream.on('start', function () {
     if (!started) {
       cb()
       started = true
     }
+  }).on('restart', function () {
+    console.log('restarted!')
+  }).on('crash', function() {
+    console.error('Application has crashed!\n')
+    stream.emit('restart', 3)  // restart the server in 3 seconds
   })
 })
 
