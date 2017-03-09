@@ -27,7 +27,7 @@ npm start
 ## Auto restarting server and reloading browsers for development
 
 ```
-npm run livereload
+npm run live
 ```
 
 ## For unit test, such as:
