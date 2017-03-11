@@ -7,7 +7,7 @@ var path = require('path')
 var fs = require('fs')
 var FileStreamRotator = require('file-stream-rotator')
 
-var logDirectory = path.join(__dirname, '..', '..', 'log')
+var logDirectory = path.join(__dirname, '..', '..', 'logs')
 
 // ensure log directory exists
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)

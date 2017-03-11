@@ -3,10 +3,7 @@
  */
 
 var tokenUtil = require('../utils/token')
-
-var SIGNIN_ERROR_CODE = 10001;
-var LOGOUT_ERROR_CODE = 10002;
-var REGISTER_ERROR_CODE = 10003;
+var code = require('../../config/error_code')
 
 /**
  * 用户登录
@@ -16,13 +13,20 @@ exports.login = function(req, res) {
   var password = req.query.password || ''
 
   if (username == '' || password == '') {
-    return res.api(401, null, { code: SIGNIN_ERROR_CODE, msg:'账号或密码不能为空' })
+    return res.api(null, { code: code.SIGNIN_ERROR, msg:'账号或密码不能为空' })
   }
 
   // TODO
+  var userInfo = {
+    id: '123',
+    name: '张三',
+    gender: 0,
+    age: 18
+  }
 
-  var token = tokenUtil.generateToken({ uid: 123 })
-  return res.api({ token: token })
+  var token = tokenUtil.generateToken({ uid: userInfo.id })
+  res.cookie('token', token)
+  return res.api({ token: token, user: userInfo })
 }
 
 /**
@@ -31,6 +35,7 @@ exports.login = function(req, res) {
 exports.logout = function(req, res) {
   if (req.user) {
     delete req.user
+    res.clearCookie('token')
     return res.sendStatus(200)
   } else {
     return res.sendStatus(401)
@@ -48,17 +53,7 @@ exports.getUser = function(req, res) {
  * 用户注册
  */
 exports.addUser = function(req, res) {
-  var username = req.body.username || ''
-  var password = req.body.password || ''
 
-  if (username == '' || password == '') {
-    return res.sendStatus(400)
-  }
-
-  // TODO
-
-  var token = tokenUtil.generateToken({ uid: 123 })
-  return res.api({ token: token })
 }
 
 exports.updateUser = function(req, res) {

@@ -1,6 +1,17 @@
 /**
  * res.api middleware
  *
+ * @output
+ *
+ * {
+ *   "data": {},
+ *   "status": {
+ *     "code": 0,
+ *     "msg": "success"
+ *   }
+ * }
+ *
+ *
  * @usage
  *
  * return res.api(data)
@@ -19,8 +30,8 @@
  */
 
 // API 基本状态码
-var API_SUCCESS_CODE = 0
-var API_ERROR_CODE = -1
+const API_SUCCESS_CODE = 0
+const API_ERROR_CODE = -1
 
 module.exports = function (req, res, next) {
   // set api header

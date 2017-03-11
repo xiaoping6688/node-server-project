@@ -10,6 +10,7 @@ var logger = require('./server/middlewares/logger')
 var authorization = require('./server/middlewares/auth')
 var compression = require('./server/middlewares/compress')
 var resApi = require('./server/middlewares/api')
+var interceptor = require('./server/middlewares/interceptor')
 
 // require('./server/utils/mongodb') // init mongodb
 // require('./server/utils/orm') // init orm
@@ -39,7 +40,10 @@ app.use(resApi)
 // authorization middleware
 app.use(authorization)
 
-// gzip compress
+// interceptor middleware
+app.use(interceptor)
+
+// compression middleware
 app.use(compression)
 
 // This is CORS-enabled for all origins; For a single route: app.get('/api', cors(), rooter)
@@ -54,67 +58,49 @@ mountRoutes(app, path.join(__dirname, 'server', 'routes'), false)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  if (req.url.indexOf('/rest/') == 0) {
-    res.api_error_code = 404;
+  if (req.path.startsWith('/rest/')) { // for api
     return res.api_error({
       message: 'Not Found'
     })
-  } else {
+  } else { // for page
     var err = new Error('Not Found')
     err.status = 404
     next(err)
   }
 })
 
-// error handlers
-// catch api Unauthorized Error
+// error handler
+// catch unauthorized error and other forward to error handler
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
-    res.api_error_code = 401;
-    return res.api_error({
-      message: 'Invalid Token'
-    })
+    if (req.path.startsWith('/rest/')) { // for api
+      return res.api_error({
+        message: 'Invalid Token',
+        error: err.message
+      })
+    } else { // for page
+      res.redirect('/login')
+    }
   } else {
     next(err)
   }
 })
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function (err, req, res, next) {
-    if (req.url.indexOf('/rest/') == 0) {
-      res.api_error_code = err.status || 500;
-      return res.api_error({
-        message: err.message,
-        error: err
-      })
-    } else {
-      res.status(err.status || 500)
-      res.render('error', {
-        layout: false,
-        message: err.message,
-        error: err
-      })
-    }
-  })
-}
-
-// production error handler
-// no stacktraces leaked to user
+// error handler
+// no stacktraces leaked to user for production,
+// and will print stacktrace for development
 app.use(function (err, req, res, next) {
-  if (req.url.indexOf('/rest/') == 0) {
-    res.api_error_code = err.status || 500;
+  if (req.path.startsWith('/rest/')) { // for api
     return res.api_error({
       message: err.message,
-      error: {}
+      error: app.get('env') === 'development' ? err : {}
     })
-  } else {
+  } else { // for page
     res.status(err.status || 500)
     res.render('error', {
       layout: false,
       message: err.message,
-      error: {}
+      error: app.get('env') === 'development' ? err : {}
     })
   }
 })

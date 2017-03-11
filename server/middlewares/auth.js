@@ -1,22 +1,22 @@
+/**
+ * JWT认证中间件
+ */
+
 var jwt = require('express-jwt')
 var secret = require('../../config/secret').token_secret_key
+var tokenUtil = require('../utils/token')
 
 module.exports = jwt({
   secret: Buffer.from(secret, 'base64'),
   requestProperty: 'user', // By default, the decoded token is attached to req.user
   credentialsRequired: true, // You might want to use this module to identify registered users while still providing access to unregistered users
-  getToken: function fromHeaderOrQuerystring (req) { // Where the token is
-    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
-      return req.headers.authorization.split(' ')[1];
-    } else if (req.query && req.query.token) {
-      return req.query.token;
-    }
-    return null
-  }
-}).unless({
+  getToken: tokenUtil.getToken // Where the token is
+}).unless({ // 排除路径
   path: [
+    '/rest/token',
     '/rest/user/regist',
     '/rest/user/login',
-    /^(?!\/rest\/).*/
+    // /^(?!\/rest\/).*/ // 所有非rest路由
+    '/login'
   ]
 })
