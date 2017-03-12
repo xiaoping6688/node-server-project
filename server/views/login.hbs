@@ -3,25 +3,49 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>前台管理系统 | 登录</title>
+  <title>管理系统 | 登录</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="{{resoucePath}}/libs/bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{resoucePath}}/libs/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="{{resoucePath}}/libs/ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{resoucePath}}/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="{{resoucePath}}/libs/iCheck/square/blue.css">
   <style>
+    .login-page, .register-page {
+      background: #d2d6de;
+    }
+    body {
+      font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    html, body {
+      height: 100%;
+    }
     .login-box {
+      width: 360px;
       position: absolute;
+      margin: 7% auto;
       top: 0;
       bottom: 0;
       left: 0;
       right: 0;
+    }
+    .login-logo {
+      font-size: 35px;
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 300;
+    }
+    .login-box-body {
+      background: #fff;
+      padding: 20px;
+      border-top: 0;
+      color: #666;
+    }
+    .login-box-msg {
+      margin: 0;
+      text-align: center;
+      padding: 0 20px 20px 20px;
     }
   </style>
 
@@ -36,7 +60,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <b><a href="#" target="_blank">LOGO</a>前台业务系统</b>
+    <b><a href="#" target="_blank">LOGO</a>业务系统</b>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -68,19 +92,7 @@
 
 <!-- jQuery 2.2.3 -->
 <script src="{{resoucePath}}/libs/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="{{resoucePath}}/libs/bootstrap/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="{{resoucePath}}/libs/iCheck/icheck.min.js"></script>
 <script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
-
   $("form").on("submit", function(){
     var username = $("#username").val().trim();
     var password = $("#password").val();
