@@ -1,10 +1,14 @@
+/**
+ * 主入口程序
+ */
+
 var express = require('express')
-var path = require('path')
 var favicon = require('serve-favicon')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var mountRoutes = require('mount-routes')
 var cors = require('cors')
+var path = require('path')
 
 var logger = require('./server/middlewares/logger')
 var authorization = require('./server/middlewares/auth')

@@ -1,2 +1,5 @@
-public/*.js
-config/*.js
+# /node_modules ignored by default
+
+public/*
+config/*
+test/*
