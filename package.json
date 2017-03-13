@@ -28,8 +28,11 @@
     "update": "ncu -u -a"
   },
   "dependencies": {
+    "amqplib": "^0.5.1",
+    "amqplib-rpc": "^2.0.4",
     "blueimp-md5": "^2.7.0",
     "body-parser": "~1.17.1",
+    "bunnymq": "^2.2.2",
     "compression": "^1.6.2",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.1",
@@ -53,7 +56,8 @@
     "request-promise": "^4.1.1",
     "sequelize": "^3.30.2",
     "serve-favicon": "~2.4.1",
-    "sqlite3": "^3.1.8"
+    "sqlite3": "^3.1.8",
+    "thrift": "^0.10.0"
   },
   "devDependencies": {
     "browser-sync": "^2.18.8",
