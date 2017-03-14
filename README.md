@@ -10,6 +10,7 @@
 - JWT（Json Web Token 认证协议，用于页面和API的验证，包括token续期方案等）
 - ORM（数据库对象关系映射）
 - TEST（集成在线API文档生成和测试工具[Swagger-ui](https://github.com/swagger-api/swagger-ui)，public/swagger目录下）
+- RabbitMQ & Thrift 集成等
 
 
 ## Build Setup  @see package.json#scripts
