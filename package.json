@@ -17,7 +17,7 @@
   "private": false,
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run prod || npm run dev",
-    "dev": "NODE_ENV=development supervisor -w server,app.js ./bin/www",
+    "dev": "cross-env NODE_ENV=development supervisor -w server,app.js ./bin/www",
     "prod": "pm2 startOrRestart ./config/pm2.js --env production",
     "stop": "pm2 stop ./bin/www",
     "reload": "pm2 reload ./bin/www",
@@ -61,6 +61,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.18.8",
+    "cross-env": "^3.2.3",
     "eslint": "^3.17.1",
     "eslint-config-standard": "^7.0.1",
     "eslint-plugin-promise": "^3.5.0",
