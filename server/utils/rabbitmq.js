@@ -1,5 +1,5 @@
 /**
- * 消息队列，简单实现了消息订阅、发布和RPC调用
+ * RabbitMQ 消息队列，简单实现了消息订阅、发布和RPC调用
  * @see https://github.com/dial-once/node-bunnymq
  * 也可参考 https://github.com/tjmehta/amqplib-rpc 实现方式
  */
