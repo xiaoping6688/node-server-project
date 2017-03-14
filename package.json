@@ -18,7 +18,7 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run prod || npm run dev",
     "dev": "NODE_ENV=development supervisor -w server,app.js ./bin/www",
-    "prod": "pm2 startOrRestart ./config/ecosystem.config.js --env production",
+    "prod": "pm2 startOrRestart ./config/pm2.js --env production",
     "stop": "pm2 stop ./bin/www",
     "reload": "pm2 reload ./bin/www",
     "debug": "node-debug ./bin/www",
