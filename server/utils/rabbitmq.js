@@ -1,17 +1,11 @@
 /**
  * 消息队列，简单实现了消息订阅、发布和RPC调用
+ * @see https://github.com/dial-once/node-bunnymq
  * 也可参考 https://github.com/tjmehta/amqplib-rpc 实现方式
  */
 
 var bunnymq = require('bunnymq')
-
-var config = {
-  host: 'amqp://localhost', // connect url
-  prefetch: 5, // number of fetched messages at once on the channel
-  requeue: true, // requeue put back message into the broker if consumer crashes/trigger exception
-  timeout: 1000, // time between two reconnect (ms)
-  rpcTimeout: 1000 // default timeout for RPC calls. If set to '0' there will be none.
-}
+var config = require('../../config/rabbitmq')
 
 var conn = bunnymq(config)
 var producer = conn.producer
