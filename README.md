@@ -58,8 +58,9 @@ npm run update
 
 ### PM2 operations and deploy
 
-First of all, please install node.js and git on server and set $PATH env in ~/.bashrc
+First of all, please install node.js and git on the server and set $PATH env in ~/.bashrc
 ```
+// for password-less ssh
 ssh-keygen -t rsa
 ssh-copy-id -i ~/.ssh/id_rsa.pub node@192.168.1.10
 ```
