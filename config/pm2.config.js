@@ -40,7 +40,7 @@ module.exports = {
       repo: "git@github.com:repo.git",
       path: "/var/www/production",
       ssh_options: "StrictHostKeyChecking=no",
-      "post-deploy": "npm install && pm2 startOrRestart ecosystem.config.js --env production",
+      "post-deploy": "npm install && npm run prod",
       env: {
         NODE_ENV: "production"
       }
@@ -48,11 +48,11 @@ module.exports = {
     development: {
       user: "node",
       host: "212.83.163.1",
-      ref: "origin/master",
+      ref: "origin/develop",
       repo: "git@github.com:repo.git",
       path: "/var/www/development",
       ssh_options: "StrictHostKeyChecking=no, PasswordAuthentication=no",
-      "post-deploy": "npm install && pm2 startOrRestart ecosystem.config.js --env development",
+      "post-deploy": "npm install && npm run prod",
       env: {
         NODE_ENV: "development"
       }
