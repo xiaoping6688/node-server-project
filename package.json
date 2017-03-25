@@ -21,6 +21,8 @@
     "prod": "pm2 startOrRestart ./config/pm2.config.js --env production",
     "stop": "pm2 stop ./bin/www",
     "reload": "pm2 reload ./bin/www",
+    "deploy:prod": "pm2 deploy ./config/pm2.config.js production",
+    "deploy:dev": "pm2 deploy ./config/pm2.config.js development",
     "debug": "node-debug ./bin/www",
     "live": "gulp browser-sync",
     "test": "./node_modules/mocha/bin/mocha",
