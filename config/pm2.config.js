@@ -14,7 +14,7 @@ module.exports = {
         "logs",
         "node_modules"
       ],
-      instances: 4,
+      instances: 0,
       exec_mode: "cluster",
       max_memory_restart: "2G",
       error_file: "./logs/pm2-err.log",
@@ -39,7 +39,6 @@ module.exports = {
       ref: "origin/master",
       repo: "git@github.com:repo.git",
       path: "/var/www/production",
-      ssh_options: "StrictHostKeyChecking=no",
       "post-deploy": "npm install && npm run prod",
       env: {
         NODE_ENV: "production"
@@ -52,7 +51,8 @@ module.exports = {
       repo: "git@github.com:repo.git",
       path: "/var/www/development",
       ssh_options: "StrictHostKeyChecking=no, PasswordAuthentication=no",
-      "post-deploy": "npm install && npm run prod",
+      "post-setup": "cnpm install && npm run prod",
+      "post-deploy": "cnpm install && npm run prod",
       env: {
         NODE_ENV: "development"
       }

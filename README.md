@@ -11,6 +11,7 @@
 - ORM（数据库对象关系映射）
 - TEST（集成在线API文档生成和测试工具[Swagger-ui](https://github.com/swagger-api/swagger-ui)，public/swagger目录下）
 - RabbitMQ & Thrift 集成等
+- PM2（Node服务自动部署和监控）
 
 
 ## Build Setup  @see package.json#scripts
@@ -53,4 +54,23 @@ Please install 'npm install npm-check-updates -g' at first
 
 ```
 npm run update
+```
+
+### PM2 operations and deploy
+
+First of all, please install node.js and git on server and set $PATH env in ~/.bashrc
+```
+ssh-keygen -t rsa
+ssh-copy-id -i ~/.ssh/id_rsa.pub node@192.168.1.10
+```
+then, use ·npm run setup:dev· for the first time, other deployment use ·npm run deploy:dev·
+```
+npm run setup:prod
+npm run setup:dev
+npm run deploy:prod
+npm run deploy:dev
+npm run stop
+npm run reload
+npm run list
+npm run monit
 ```
