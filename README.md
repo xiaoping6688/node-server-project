@@ -16,10 +16,10 @@
 
 ## Build Setup  @see package.json#scripts
 
-### Install dependencies
-
+### Install dependencies, use cnpm:
+npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
-npm install
+cnpm install
 ```
 
 ### Start server for development or production (pm2)
