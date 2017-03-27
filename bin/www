@@ -8,11 +8,13 @@ var app = require('../app')
 var debug = require('debug')('server')
 var http = require('http')
 
+var config = app.get('env') === 'production' ? require('../config/production') : require('../config/development')
+
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000')
+var port = normalizePort(process.env.PORT || config.port)
 app.set('port', port)
 
 /**

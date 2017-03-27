@@ -1,6 +1,7 @@
 const gulp = require('gulp')
 const nodemon = require('gulp-nodemon')
 const browserSync = require('browser-sync').create()
+const config = require('./config/development')
 
 gulp.task("server", function(cb) {
   let started = false
@@ -35,11 +36,11 @@ gulp.task('browser-sync', ['server'], function() {
 
   browserSync.init({
     files: files,
-    proxy: 'http://localhost:3000',
+    proxy: 'http://localhost:' + config.port,
     // browser: 'google chrome',
     // notify: false,
     // ui: false,
-    port: 3001
+    port: parseInt(config.port) + 1
   })
 
   gulp.watch(files).on('change', browserSync.reload)
