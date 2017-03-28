@@ -64,12 +64,12 @@ First of all, please install node.js and git on the server and set $PATH env in 
 ssh-keygen -t rsa
 ssh-copy-id -i ~/.ssh/id_rsa.pub node@192.168.1.10
 ```
-then, use ·npm run setup:dev· for the first time, other deployment use ·npm run deploy:dev·
+then, use ·npm run setup:test· for the first time, other deployment use ·npm run deploy:test·
 ```
 npm run setup:prod
-npm run setup:dev
+npm run setup:test
 npm run deploy:prod
-npm run deploy:dev
+npm run deploy:test
 npm run stop
 npm run reload
 npm run list

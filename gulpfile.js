@@ -3,6 +3,9 @@ const nodemon = require('gulp-nodemon')
 const browserSync = require('browser-sync').create()
 const config = require('./config/development')
 
+/**
+ * 启动本地server
+ */
 gulp.task("server", function(cb) {
   let started = false
   let stream = nodemon({
@@ -10,7 +13,7 @@ gulp.task("server", function(cb) {
     ext: 'js',
     watch: ['server/', 'app.js'],
     env: {
-      'NODE_ENV': 'development'
+      'NODE_ENV': config.NODE_ENV
     }
   })
 
@@ -27,6 +30,9 @@ gulp.task("server", function(cb) {
   })
 })
 
+/**
+ * 同步浏览器
+ */
 gulp.task('browser-sync', ['server'], function() {
   var files = [
     'server/views/**/*.html',

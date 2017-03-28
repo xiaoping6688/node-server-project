@@ -1,8 +1,11 @@
-'use strict';
+/**
+ * 开发环境
+ */
 
 module.exports = {
   port: 3000,
   logging:{
-    level: 1
-  }
+    type: 'dev' // :method :url :status :response-time ms - :res[content-length]
+  },
+  NODE_ENV: 'development'
 }

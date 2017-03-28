@@ -8,6 +8,7 @@ var fs = require('fs')
 var FileStreamRotator = require('file-stream-rotator')
 
 var logDirectory = path.join(__dirname, '..', '..', 'logs')
+var config = require('../../config/' + process.env.NODE_ENV)
 
 // ensure log directory exists
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
@@ -20,11 +21,6 @@ var accessLogStream = FileStreamRotator.getStream({
   verbose: false
 })
 
-var logger
-if (process.env.NODE_ENV === 'production') {
-  logger = morgan('combined', { stream: accessLogStream }) // Standard Apache combined log output
-} else {
-  logger = morgan('dev', { stream: accessLogStream }) // :method :url :status :response-time ms - :res[content-length]
-}
+var logger = morgan(config.logging.type, { stream: accessLogStream })
 
 module.exports = logger

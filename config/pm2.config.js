@@ -38,23 +38,23 @@ module.exports = {
       host: ["212.83.163.1"],
       ref: "origin/master",
       repo: "git@github.com:repo.git",
-      path: "/var/www/production",
+      path: "/var/www/node-server",
       "post-deploy": "npm install && npm run prod",
       env: {
         NODE_ENV: "production"
       }
     },
-    development: {
+    testing: {
       user: "node",
       host: "212.83.163.1",
       ref: "origin/develop",
       repo: "git@github.com:repo.git",
-      path: "/var/www/development",
+      path: "/var/www/node-server",
       ssh_options: "StrictHostKeyChecking=no, PasswordAuthentication=no",
-      "post-setup": "cnpm install && npm run prod",
-      "post-deploy": "cnpm install && npm run prod",
+      "post-setup": "cnpm install && npm run testing",
+      "post-deploy": "cnpm install && npm run testing",
       env: {
-        NODE_ENV: "development"
+        NODE_ENV: "testing"
       }
     }
   }

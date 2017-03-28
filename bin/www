@@ -8,7 +8,7 @@ var app = require('../app')
 var debug = require('debug')('server')
 var http = require('http')
 
-var config = app.get('env') === 'production' ? require('../config/production') : require('../config/development')
+var config = require('../config/' + app.get('env'))
 
 /**
  * Get port from environment and store in Express.
@@ -31,7 +31,7 @@ server.listen(port)
 server.on('error', onError)
 server.on('listening', onListening)
 
-console.log('env: ' + app.get('env'))
+console.log('env: ' + config.NODE_ENV)
 
 /**
  * Normalize a port into a number, string, or false.

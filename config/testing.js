@@ -1,5 +1,5 @@
 /**
- * 生产环境
+ * 测试环境
  */
 
 module.exports = {
@@ -7,5 +7,5 @@ module.exports = {
   logging: {
     type: 'combined' // Standard Apache combined log output
   },
-  NODE_ENV: 'production'
+  NODE_ENV: 'testing'
 }
