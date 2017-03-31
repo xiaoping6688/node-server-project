@@ -36,18 +36,23 @@ function mutate (uri, options) {
 
   options.json = true
 
+  console.log(`Request ${options.uri}` + (options.body ? ' : ' + options.body : ''))
+
   return options
 }
 
 /**
  * 接口调用服务
- * @param {String} url 接口API（必填）
+ * @param {String} uri 接口API（必填）
  * @param {Object} options 请求参数（选填）{headers, body, query, ...options}
  * @return {Object} Promise
  * @throws {Error}
  */
-var callService = function (url, options = {}) {
-  return request(mutate(url, options))
+var callService = function (uri, options = {}) {
+  return request(mutate(uri, options)).then(response => {
+    console.log(`Response ${uri} :`, response)
+    return response
+  })
 }
 
 exports.callService = callService

@@ -9,6 +9,7 @@ module.exports = {
       script: "./bin/www",
       watch: true,
       ignore_watch: [
+        "client",
         "public",
         "test",
         "logs",
@@ -16,14 +17,22 @@ module.exports = {
       ],
       instances: 0,
       exec_mode: "cluster",
-      max_memory_restart: "2G",
-      error_file: "./logs/pm2-err.log",
-      out_file: "./logs/pm2-out.log",
+      max_memory_restart: "1G",
+      error_file: "./logs/err.log",
+      out_file: "./logs/out.log",
+      merge_logs: false,
+      log_date_format: 'YYYY-MM-DD HH:mm:ss',
       env: {
-        COMMON_VARIABLE: "true"
+        PM2: "true"
       },
       env_production: {
         NODE_ENV: "production"
+      },
+      env_testing: {
+        NODE_ENV: "testing"
+      },
+      env_development: {
+        NODE_ENV: "development"
       }
     }
   ],
@@ -50,7 +59,7 @@ module.exports = {
       ref: "origin/develop",
       repo: "git@github.com:repo.git",
       path: "/var/www/node-server",
-      ssh_options: "StrictHostKeyChecking=no, PasswordAuthentication=no",
+      ssh_options: ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
       "post-setup": "cnpm install && npm run testing",
       "post-deploy": "cnpm install && npm run testing",
       env: {
