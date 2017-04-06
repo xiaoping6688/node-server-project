@@ -7,5 +7,6 @@ module.exports = {
   logging:{
     type: 'dev' // :method :url :status :response-time ms - :res[content-length]
   },
-  NODE_ENV: 'development'
+  NODE_ENV: 'development',
+  BASE_URI: 'http://ip/api'
 }

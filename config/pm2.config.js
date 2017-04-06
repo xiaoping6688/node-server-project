@@ -28,6 +28,9 @@ module.exports = {
       env_production: {
         NODE_ENV: "production"
       },
+      env_simulation: {
+        NODE_ENV: "simulation"
+      },
       env_testing: {
         NODE_ENV: "testing"
       },
@@ -44,13 +47,25 @@ module.exports = {
   deploy: {
     production: {
       user: "node",
-      host: ["212.83.163.1"],
+      host: ["212.83.163.1", "212.83.163.2"],
       ref: "origin/master",
       repo: "git@github.com:repo.git",
       path: "/var/www/node-server",
       "post-deploy": "npm install && npm run prod",
       env: {
         NODE_ENV: "production"
+      }
+    },
+    simulation: {
+      user: "node",
+      host: ["212.83.163.3"],
+      ref: "origin/master",
+      repo: "git@github.com:repo.git",
+      path: "/var/www/node-server",
+      "post-setup": "cnpm install && npm run simu",
+      "post-deploy": "cnpm install && npm run simu",
+      env: {
+        NODE_ENV: "simulation"
       }
     },
     testing: {

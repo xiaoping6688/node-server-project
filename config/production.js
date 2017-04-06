@@ -7,5 +7,6 @@ module.exports = {
   logging: {
     type: 'combined' // Standard Apache combined log output
   },
-  NODE_ENV: 'production'
+  NODE_ENV: 'production',
+  BASE_URI: 'http://ip/api'
 }

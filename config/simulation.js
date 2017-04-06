@@ -1,5 +1,5 @@
 /**
- * 测试环境
+ * 仿真环境
  */
 
 module.exports = {
@@ -7,6 +7,6 @@ module.exports = {
   logging: {
     type: 'combined' // Standard Apache combined log output
   },
-  NODE_ENV: 'testing',
+  NODE_ENV: 'simulation',
   BASE_URI: 'http://ip/api'
 }
