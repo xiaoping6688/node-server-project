@@ -50,7 +50,7 @@ module.exports = {
       host: ["212.83.163.1", "212.83.163.2"],
       ref: "origin/master",
       repo: "git@github.com:repo.git",
-      path: "/var/www/node-server",
+      path: "/home/node/node-server-project",
       "post-deploy": "npm install && npm run prod",
       env: {
         NODE_ENV: "production"
@@ -61,7 +61,7 @@ module.exports = {
       host: ["212.83.163.3"],
       ref: "origin/master",
       repo: "git@github.com:repo.git",
-      path: "/var/www/node-server",
+      path: "/home/node/node-server-project",
       "post-setup": "cnpm install && npm run simu",
       "post-deploy": "cnpm install && npm run simu",
       env: {
@@ -73,7 +73,7 @@ module.exports = {
       host: "212.83.163.1",
       ref: "origin/develop",
       repo: "git@github.com:repo.git",
-      path: "/var/www/node-server",
+      path: "/home/node/node-server-project",
       ssh_options: ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
       "post-setup": "cnpm install && npm run testing",
       "post-deploy": "cnpm install && npm run testing",

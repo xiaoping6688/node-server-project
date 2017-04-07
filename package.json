@@ -30,6 +30,7 @@
     "reload": "pm2 reload ./config/pm2.config.js",
     "list": "pm2 list",
     "monit": "pm2 monit",
+    "logs": "pm2 logs",
     "debug": "node-debug ./bin/www",
     "live": "gulp browser-sync",
     "test": "./node_modules/mocha/bin/mocha",

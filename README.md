@@ -60,18 +60,32 @@ npm run update
 
 First of all, please install node.js and git on the server and set $PATH env in ~/.bashrc
 ```
-// for password-less ssh
+export NODE_HOME=/data/node-v7.7.4-linux-x64
+export PATH=$NODE_HOME/bin:$PATH
+```
+
+Host key verification after you execute ssh-keygen on server, and set ssh-key to gitlab.
+```
+ssh-keyscan -t rsa yourGitServer >> ~/.ssh/known_hosts
+```
+
+For client ssh password-less logon
+```
 ssh-keygen -t rsa
 ssh-copy-id -i ~/.ssh/id_rsa.pub node@192.168.1.10
 ```
+
 then, use ·npm run setup:test· for the first time, other deployment use ·npm run deploy:test·
 ```
-npm run setup:prod
 npm run setup:test
-npm run deploy:prod
+npm run setup:simu
+npm run setup:prod
 npm run deploy:test
+npm run deploy:simu
+npm run deploy:prod
 npm run stop
 npm run reload
 npm run list
 npm run monit
+npm run logs
 ```

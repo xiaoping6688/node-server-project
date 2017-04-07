@@ -5,7 +5,7 @@
   "debug-brk": false,
   "save-live-edit": false,
   "preload": true,
-  "hidden": ["test/", "node_modules/", "client/", "public/", "config/"],
+  "hidden": ["test/", "node_modules/", "client/", "public/", "config/", "logs/"],
   "nodejs": [],
   "stack-trace-limit": 50
 }
