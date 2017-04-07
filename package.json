@@ -31,6 +31,7 @@
     "list": "pm2 list",
     "monit": "pm2 monit",
     "logs": "pm2 logs",
+    "gui": "./node_modules/.bin/pm2-gui start ../../config/pm2-gui.ini",
     "debug": "node-debug ./bin/www",
     "live": "gulp browser-sync",
     "test": "./node_modules/mocha/bin/mocha",
@@ -85,6 +86,7 @@
     "if-env": "^1.0.0",
     "mocha": "^3.2.0",
     "pm2": "^2.4.2",
+    "pm2-gui": "^0.1.4",
     "supertest": "^3.0.0",
     "supervisor": "^0.12.0"
   },
