@@ -10,6 +10,8 @@ var mountRoutes = require('mount-routes')
 var cors = require('cors')
 var path = require('path')
 
+var config = require('./package.json')
+
 var logger = require('./server/middlewares/logger')
 var authorization = require('./server/middlewares/auth')
 var compression = require('./server/middlewares/compress')
@@ -34,6 +36,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // set resouces root url
 app.locals.resoucePath = '/static'
+// set resouces version
+app.locals.resouceVersion = config.version
 
 // log middleware
 app.use(logger)
@@ -108,5 +112,12 @@ app.use(function (err, req, res, next) {
     })
   }
 })
+
+// Node全局异常捕获
+process.on('uncaughtException', function (err) {
+  console.error('An uncaught error occurred!')
+  console.error(err.stack)
+  // Recommend: restart the server
+});
 
 module.exports = app
