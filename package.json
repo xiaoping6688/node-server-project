@@ -33,7 +33,7 @@
     "logs": "pm2 logs",
     "gui": "./node_modules/.bin/pm2-gui start ../../config/pm2-gui.ini",
     "debug": "node-debug ./bin/www",
-    "live": "gulp browser-sync",
+    "live": "cross-env NODE_ENV=development gulp browser-sync",
     "test": "./node_modules/mocha/bin/mocha",
     "lint": "./node_modules/.bin/eslint app.js server",
     "update": "ncu -u -a"

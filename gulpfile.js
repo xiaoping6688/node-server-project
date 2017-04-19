@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const nodemon = require('gulp-nodemon')
 const browserSync = require('browser-sync').create()
-const config = require('./config/development')
+const config = require('./config/' + process.env.NODE_ENV)
 
 /**
  * 启动本地server
