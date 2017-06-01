@@ -16,6 +16,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "installall": "(cnpm install) && (cd client && cnpm install)",
     "dev": "cross-env NODE_ENV=development supervisor -w server,app.js ./bin/www",
     "testing": "pm2 startOrRestart ./config/pm2.config.js --env testing",
     "simu": "pm2 startOrRestart ./config/pm2.config.js --env simulation",
@@ -33,7 +34,9 @@
     "logs": "pm2 logs",
     "gui": "./node_modules/.bin/pm2-gui start ../../config/pm2-gui.ini",
     "debug": "node-debug ./bin/www",
-    "live": "cross-env NODE_ENV=development gulp browser-sync",
+    "client": "cd client && npm build",
+    "live:client": "cd client && npm start",
+    "live:server": "cross-env NODE_ENV=development gulp browser-sync",
     "test": "./node_modules/mocha/bin/mocha",
     "lint": "./node_modules/.bin/eslint app.js server",
     "update": "ncu -u -a"
