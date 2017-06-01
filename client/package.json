@@ -1,7 +1,7 @@
 {
-  "name": "webapp-client",
+  "name": "client-project",
   "version": "1.0.0",
-  "description": "前端源文件",
+  "description": "前端项目",
   "author": "super_xp@126.com",
   "private": true,
   "scripts": {},
