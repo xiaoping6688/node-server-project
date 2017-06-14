@@ -4,7 +4,11 @@
   "description": "前端项目",
   "author": "super_xp@126.com",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "start": "gulp default",
+    "build": "gulp build",
+    "watch": "gulp watch"
+  },
   "dependencies": {},
   "devDependencies": {
     "del": "^2.2.2",
