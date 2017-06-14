@@ -13,6 +13,7 @@
 - RabbitMQ & Thrift & 环信服务端 集成等
 - PM2（Node服务自动部署和监控）
 
+关于API接口文档管理及线上线下测试，推荐：[SosoApi](http://www.sosoapi.com/)
 
 ## Build Setup  @see package.json#scripts
 
@@ -31,7 +32,8 @@ npm start
 ### Auto restarting server and reloading browsers for development
 
 ```
-npm run live
+npm run live:client // 客户端源码变动实时监测
+npm run live:server // 服务端源码变动实时监测
 ```
 
 ### For unit test, such as:
@@ -56,7 +58,7 @@ Please install 'npm install npm-check-updates -g' at first
 npm run update
 ```
 
-### PM2 operations and deploy
+### PM2 operations and deploy（基于Git）
 
 First of all, please install node.js and git on the server and set $PATH env in ~/.bashrc
 ```
@@ -77,12 +79,12 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub node@192.168.1.10
 
 then, use ·npm run setup:test· for the first time, other deployment use ·npm run deploy:test·
 ```
-npm run setup:test
-npm run setup:simu
-npm run setup:prod
-npm run deploy:test
-npm run deploy:simu
-npm run deploy:prod
+npm run setup:test // 测试环境远程部署（第一次安装）
+npm run setup:simu // 仿真环境远程部署（第一次安装）
+npm run setup:prod // 生产环境远程部署（第一次安装）
+npm run deploy:test // 测试环境远程部署（后期更新）
+npm run deploy:simu // 仿真环境远程部署（后期更新）
+npm run deploy:prod // 生产环境远程部署（后期更新）
 npm run stop
 npm run reload
 npm run list
