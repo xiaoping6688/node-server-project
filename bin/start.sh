@@ -4,6 +4,8 @@
 # pm2 save
 # pm2 startup centos
 
+cd `dirname $0`
+
 if [ "$1" == "" ]; then
   npm run prod
 else
